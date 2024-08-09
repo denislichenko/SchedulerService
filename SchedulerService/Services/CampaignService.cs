@@ -8,7 +8,6 @@ namespace SchedulerService.Services
         public readonly IFileSendService _fileService;
         public readonly List<Customer> _customers;
         public readonly List<Campaign> _campaigns;
-        public readonly List<Customer> _sendedCustomers;
 
         public CampaignService(
             IFileSendService fileService,
@@ -18,8 +17,6 @@ namespace SchedulerService.Services
             _fileService = fileService;
             _customers = customers;
             _campaigns = campaigns.OrderBy(c => c.Priority).ToList();
-
-            _sendedCustomers = new List<Customer>();
         }
 
         public async Task ScheduleAndSendCampaignsAsync()
